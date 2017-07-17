@@ -4,12 +4,12 @@ stages:
     scheduler:
       scheduler_type: 'singlestep-stage'
       parameters:
-        command: {stages: init, output: name, unwrap: True}
+        command: {stages: init, output: command, unwrap: True}
         outputfile: '{workdir}/version.txt'
       step:
         process:
           process_type: 'string-interpolated-cmd'
-          cmd: 'ffmpeg -"{name}" > "{outputfile}"'
+          cmd: 'ffmpeg -"{command}" > "{outputfile}"'
         publisher:
           publisher_type: 'frompar-pub'
           outputmap:
