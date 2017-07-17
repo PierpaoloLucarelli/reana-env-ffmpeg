@@ -10,4 +10,4 @@ test:
 	docker run -i -t --rm $(IMAGE) root-config --version | grep -q ^6
 
 push:
-	docker push $(IMAGE)
+	docker push $(IMAGE)cd .idea
