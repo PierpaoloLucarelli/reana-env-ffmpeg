@@ -1,0 +1,5 @@
+workflow: yadage
+yadage_file: ffmpeg.yaml
+yadage_toplevel: github:PierpaoloLucarelli/reana-env-ffmpeg
+yadage_nparallel: 10
+yadage_preset_parameters: {"command": "version"}

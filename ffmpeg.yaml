@@ -1,0 +1,19 @@
+stages:
+  - name: ffmpeg
+    dependencies: [init]
+    scheduler:
+      scheduler_type: 'singlestep-stage'
+      parameters:
+        command: {stages: init, output: name, unwrap: True}
+        outputfile: '{workdir}/version.txt'
+      step:
+        process:
+          process_type: 'string-interpolated-cmd'
+          cmd: 'ffmpeg -"{name}" > "{outputfile}"'
+        publisher:
+          publisher_type: 'frompar-pub'
+          outputmap:
+            outputfile: outputfile
+        environment:
+          environment_type: 'docker-encapsulated'
+image: 'pierpaololucarelli/reana-env-ffmpeg'
